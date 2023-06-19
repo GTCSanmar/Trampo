@@ -1,0 +1,26 @@
+@URL = http://localhost/GABRIEL-SANMARTIN/
+
+GET {{URL}}/compra/get.php
+
+###Criar compra
+POST {{URL}}/compra/create.php
+Content-Type: application/json
+
+{
+    "id_usuario": 4,
+    "valor": 2,
+    "data_compra": "2023-10-22"
+}
+
+### Atualizar compra
+POST {{URL}}/compra/update.php?id_compra=1
+Content-Type: application/json
+
+{
+    "valor": 111,
+    "data_compra": "2023-10-22"
+}
+
+###Deletar compra
+GET {{URL}}/compra/delete.php?id_compra=1
+
