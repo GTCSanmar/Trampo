@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detalhes do Produto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Estilos CSS personalizados */
+    body {
+      padding: 20px;
+      background-color: #000;
+      color: #8A2BE2;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #8A2BE2;
+    }
+    .product-details {
+      margin-bottom: 40px;
+    }
+    .product-name {
+      color: #8A2BE2;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .product-description {
+      color: #8A2BE2;
+    }
+    .product-price {
+      color: #8A2BE2;
+      margin-bottom: 10px;
+    }
+    .add-to-cart-button {
+      background-color: #008000;
+      color: #FFF;
+      border-color: #008000;
+    }
+    .add-to-cart-button:hover {
+      background-color: #006400;
+      border-color: #006400;
+    }
+    .quantity-input {
+      width: 60px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="text-center">Detalhes do Produto</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product-details">
+          <h2 class="product-name">Nome do Produto 1</h2>
+          <p class="product-description">Descrição do produto 1</p>
+          <p class="product-price">Preço: R$ XX</p>
+          <div class="form-group">
+            <label for="quantity-1">Quantidade:</label>
+            <input type="number" class="form-control quantity-input" id="quantity-1" value="1" min="1">
+          </div>
+          <button class="btn btn-primary add-to-cart-button" onclick="showSuccessPopup()">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-details">
+          <h2 class="product-name">Nome do Produto 2</h2>
+          <p class="product-description">Descrição do produto 2</p>
+          <p class="product-price">Preço: R$ XX</p>
+          <div class="form-group">
+            <label for="quantity-2">Quantidade:</label>
+            <input type="number" class="form-control quantity-input" id="quantity-2" value="1" min="1">
+          </div>
+          <button class="btn btn-primary add-to-cart-button" onclick="showSuccessPopup()">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-details">
+          <h2 class="product-name">Nome do Produto 3</h2>
+          <p class="product-description">Descrição do produto 3</p>
+          <p class="product-price">Preço: R$ XX</p>
+          <div class="form-group">
+            <label for="quantity-3">Quantidade:</label>
+            <input type="number" class="form-control quantity-input" id="quantity-3" value="1" min="1">
+          </div>
+          <button class="btn btn-primary add-to-cart-button" onclick="showSuccessPopup()">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pop-up de sucesso -->
+  <div id="success-popup" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Produto Adicionado ao Carrinho</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>O produto foi adicionado ao carrinho com sucesso!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    function showSuccessPopup() {
+      $('#success-popup').modal('show');
+    }
+  </script>
+</body>
+</html>

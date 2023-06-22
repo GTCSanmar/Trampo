@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Página Inicial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Estilos CSS personalizados */
+    body {
+      padding: 20px;
+      background-color: #000;
+      color: #fff;
+    }
+    h1, h2, h3 {
+      color: #4b0082;
+      text-align: center;
+    }
+    .category-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .category-list li {
+      margin: 10px;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .search-bar input[type="text"] {
+      background-color: #4b0082;
+      color: #fff;
+      border-color: #4b0082;
+    }
+    .search-bar input[type="text"]::placeholder {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="text-center">Bem-vindo à Loja Projeto HTML</h1>
+    <div class="search-bar">
+      <input type="text" class="form-control" placeholder="Pesquisar">
+    </div>
+  </header>
+  <nav>
+    <ul class="category-list">
+      <li><a href="categoria.html?categoria=copos-termicos">Copos Térmicos</a></li>
+      <li><a href="categoria.html?categoria=copos-de-vidro">Copos de Vidro</a></li>
+      <li><a href="categoria.html?categoria=copos-de-crianca">Copos de Criança</a></li>
+      <li><a href="categoria.html?categoria=canecas">Canecas</a></li>
+      <li><a href="categoria.html?categoria=xicaras">Xícaras</a></li>
+    </ul>
+  </nav>
+  <ul class="product-list">
+    <!-- Listagem de produtos da categoria -->
+  </ul>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

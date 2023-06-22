@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Perfil do Usuário - Área Administrativa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Estilos CSS personalizados */
+    body {
+      padding: 20px;
+      background-color: #000;
+      color: #4b0082;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .input-lightgray {
+      background-color: #f8f9fa;
+    }
+    .btn-darkblue {
+      background-color: #00416A;
+      border-color: #00416A;
+      color: #fff;
+    }
+    .navbar {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-left">Perfil do Usuário</h1>
+    <div class="row justify-content-start">
+      <div class="col-lg-6">
+        <form method="POST" action="processa_atualizacao_perfil.php">
+          <div class="form-group">
+            <input type="text" class="form-control input-lightgray" name="nome" placeholder="Nome Completo" required>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control input-lightgray" name="email" placeholder="E-mail" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control input-lightgray" name="endereco" placeholder="Endereço" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control input-lightgray" name="cpf" placeholder="CPF" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control input-lightgray" name="cartao" placeholder="Números do Cartão" required>
+          </div>
+          <button type="submit" class="btn btn-darkblue">Atualizar Perfil</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pop-up de Operação com Sucesso -->
+  <div class="modal fade" id="successPopup" tabindex="-1" role="dialog" aria-labelledby="successPopupLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successPopupLabel">Perfil Atualizado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>A operação foi realizada com sucesso.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    // Exibir o pop-up de sucesso ao enviar o formulário
+    document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Impedir o envio do formulário
+      $('#successPopup').modal('show'); // Exibir o pop-up de sucesso
+    });
+  </script>
+</body>
+</html>
