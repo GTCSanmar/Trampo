@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>Registro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Estilos CSS personalizados */
+    body {
+      padding: 20px;
+      background-color: #000;
+      color: #8A2BE2;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: left;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .registration-form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .form-control {
+      background-color: #FFF;
+      color: #8A2BE2;
+    }
+    .btn-primary {
+      background-color: #8A2BE2;
+      border-color: #8A2BE2;
+    }
+    .btn-primary:hover {
+      background-color: #6B238E;
+      border-color: #6B238E;
+    }
+    .text-left {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="text-left">Registro</h1>
+  <form class="registration-form">
+    <div class="form-group">
+      <input type="text" class="form-control text-left" name="nome" placeholder="Nome">
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-control text-left" name="email" placeholder="E-mail">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control text-left" name="senha" placeholder="Senha">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control text-left" name="confirmarSenha" placeholder="Confirmar Senha">
+    </div>
+    <div class="form-group">
+      <input type="date" class="form-control text-left" name="nascimento" placeholder="Data de Nascimento">
+    </div>
+    <div class="form-group">
+      <input type="tel" class="form-control text-left" name="telefone" placeholder="Telefone">
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+  </form>
+
+  <!-- Pop-up de confirmação -->
+  <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel">Cadastro Efetuado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          O seu cadastro foi efetuado com sucesso. Um e-mail de confirmação será enviado para o endereço fornecido.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <script>
+    
+    // Exibe o pop-up de confirmação ao enviar o formulário
+    $('.registration-form').on('submit', function (e) {
+
+      e.preventDefault(); // Impede o envio do formulário
+
+      var senha = document.getElementsByName('senha')[0].value;
+
+      if (document.getElementsByName('confirmarSenha')[0].value == senha)  //verificar os campos pra ver se estão corretos...
+      {
+        /* Se tiver o ajax (no caso vc ta usando a build slim do jquery, então não tem)
+
+        var nome = document.getElementsByName('nome')[0].value;
+        var email = document.getElementsByName('email')[0].value;
+        var nascimento = document.getElementsByName('nascimento')[0].value;
+
+        $.ajax({
+          url: 'create.php',
+          type: 'POST',
+          data: {
+              nome: nome,
+              email: email,
+              senha: senha,
+              nascimento: nascimento,
+              admin: 0 //Sla de onde vem esse admin
+          },
+          success: function() {
+            $('#successModal').modal('show') // Exibe o pop-up de sucesso
+            return;
+          }
+        });
+        */
+
+        //Ou usa o fetch do javascript mesmo (tambem daria pra enviar direto do formulario, mas ai a pagina mudaria, o que n é desejado).
+        fetch( 'create.php', {
+          method:'POST',
+          body: new FormData(document.querySelector('.registration-form'))
+        });
+        
+        $('#successModal').modal('show') // Exibe o pop-up de sucesso
+
+        return;
+
+      }
+
+      console.log("Erro.")
+      //Mostra o erro com um desses popup, ou sei lá.
+
+    });
+
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,17 @@
+/* Estilos CSS personalizados */
+body {
+padding: 20px;
+background-color: #000;
+color: #4b0082;
+}
+.login-form {
+max-width: 400px;
+margin: 0;
+}
+.form-group {
+margin-bottom: 20px;
+}
+.forgot-password {
+font-size: 12px;
+text-align: center;
+}

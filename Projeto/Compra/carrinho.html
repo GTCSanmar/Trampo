@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carrinho de Compras</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Estilos CSS personalizados */
+    body {
+      padding: 20px;
+      background-color: #000;
+      color: #8A2BE2;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #8A2BE2;
+    }
+    .product-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+    .product-list li {
+      margin-bottom: 10px;
+    }
+    .checkout-button {
+      background-color: #008000;
+      color: #FFF;
+      border-color: #008000;
+      margin-right: 10px;
+    }
+    .checkout-button:hover {
+      background-color: #006400;
+      border-color: #006400;
+    }
+    .clear-cart-button {
+      background-color: #DC143C;
+      color: #FFF;
+      border-color: #DC143C;
+    }
+    .clear-cart-button:hover {
+      background-color: #B22222;
+      border-color: #B22222;
+    }
+    .product-table {
+      background-color: #000;
+      color: #8A2BE2;
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    .product-table th, .product-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #8A2BE2;
+    }
+    .product-table th {
+      background-color: #000;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Carrinho de Compras</h1>
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Linhas da tabela  -->
+      </tbody>
+    </table>
+
+    <div class="text-center">
+      <button id="finalizarPedido" class="btn btn-primary checkout-button">Finalizar Pedido</button>
+      <button id="limparCarrinho" class="btn btn-danger clear-cart-button">Esvaziar Carrinho</button>
+    </div>
+  </div>
+
+  <div id="limparCarrinhoModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Carrinho Limpo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          O carrinho de compras foi esvaziado com sucesso.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmacaoModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmação de Compra</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Sua compra foi realizada com sucesso. Você receberá um e-mail com informações sobre o envio do produto.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    // Script para mostrar o pop-up quando o carrinho for limpo
+    $('#limparCarrinho').click(function() {
+      $('#limparCarrinhoModal').modal('show');
+    });
+
+    // Script para mostrar o pop-up de confirmação de compra
+    $('#finalizarPedido').click(function() {
+
+      var compras = document.querySelector('tbody').children;
+      var qtd = compras.length;
+      if (qtd > 0){
+        
+        var valor = 0;
+
+        for (let index = 0; index < qtd; index++) {
+          valor += compras[index].children[2].nodeValue
+        }
+
+        fetch( 'Create.php', {
+          method:'POST',
+          body: {
+            id_usuario: localStorage.getItem('Id'),
+            valor: valor,
+            data: new Date()
+          }
+        });
+
+        $('#confirmacaoModal').modal('show');
+
+      }
+    });
+  </script>
+</body>
+</html>
